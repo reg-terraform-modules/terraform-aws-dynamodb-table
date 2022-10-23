@@ -4,8 +4,8 @@ variable "env" {
   type        = string
 }
 
-variable "parent_module_path" {
-  description = "Path of the parent module - to be used for naming resources etc"
+variable "project_name" {
+  description = "Name of project - used to create resource name"
   type        = string
 }
 
@@ -24,8 +24,11 @@ variable "attribute_type" {
   type        = string
 }
 
-
-
+variable "module_prefix" {
+  description = "Name of child module - used to create resource name"
+  type        = string
+  default     = "dynamodb_for"
+}
 
 #Optional variables - default values used unless others specified:
 

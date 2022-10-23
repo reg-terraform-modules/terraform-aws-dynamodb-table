@@ -1,5 +1,10 @@
+locals { 
+    service_name     = join("_", [var.module_prefix,var.module_name])
+    table_name       = join("-", [var.project_name,local.service_name,var.env])
+}
+
 resource "aws_dynamodb_table" "this" {
-  name         = join("", [basename(var.parent_module_path), "-", var.module_name,"-", var.env])
+  name         = local.table_name
   billing_mode = var.billing_mode
   hash_key     = var.attribute_name
   attribute {
